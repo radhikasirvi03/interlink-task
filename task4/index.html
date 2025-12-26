@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Modern Image Gallery</title>
+
+<style>
+/* ===== RESET & BASE ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(to right, #b0d4ddff, #ffffff);
+}
+
+h1 {
+    text-align: center;
+    padding: 25px;
+    font-weight: 600;
+}
+
+/* ===== MASONRY GALLERY ===== */
+.gallery {
+    column-count: 4;
+    column-gap: 15px;
+    padding: 20px;
+}
+
+@media (max-width: 1200px) {
+    .gallery { column-count: 3; }
+}
+@media (max-width: 768px) {
+    .gallery { column-count: 2; }
+}
+@media (max-width: 480px) {
+    .gallery { column-count: 1; }
+}
+
+.gallery-item {
+    break-inside: avoid;
+    margin-bottom: 15px;
+    position: relative;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    border-radius: 12px;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.04);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* ===== IMAGE CAPTION ===== */
+.caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    border-radius: 0 0 12px 12px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.gallery-item:hover .caption {
+    opacity: 1;
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+    animation: zoom 0.4s ease;
+}
+
+@keyframes zoom {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 35px;
+    color: white;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📸 Image Gallery of Arts</h1>
+
+<div class="gallery">
+    <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="img1.jpg">
+        <div class="caption">Lord Krishna</div>
+    </div>
+
+    <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="img2.jpg">
+        <div class="caption">Wild Eagle</div>
+    </div>
+
+    <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="img3.jpg">
+        <div class="caption">Butterfly</div>
+    </div>
+
+    <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="img4.jpg">
+        <div class="caption">Cute Dog</div>
+    </div>
+
+    <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="img5.avif">
+        <div class="caption">Girl beauty</div>
+    </div>
+
+    <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="img6.jpg">
+        <div class="caption">Art Design</div>
+    </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img">
+</div>
+
+<script>
+function openLightbox(element) {
+    document.getElementById("lightbox").style.display = "flex";
+    document.getElementById("lightbox-img").src = element.querySelector("img").src;
+}
+
+function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+}
+</script>
+
+</body>
+</html>
+

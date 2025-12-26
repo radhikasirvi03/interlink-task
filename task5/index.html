@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Recipe Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>🍽 Mini Recipe Website</h1>
+    <p>Simple vegetarian recipes</p>
+
+    <div class="controls">
+        <input type="text" id="searchInput" placeholder="Search recipe..." onkeyup="searchRecipe()">
+        <button onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    </div>
+</header>
+
+<section class="card-container">
+
+    <div class="card" onclick="openRecipe('manchurian')">
+        <img src="manchuria.jpg" alt="Veg Manchurian">
+        <h3>Veg Manchurian</h3>
+        <div class="tags">
+            <span class="tag">Chinese</span>
+            <span class="tag">Spicy</span>
+            <span class="tag">35 mins</span>
+        </div>
+    </div>
+
+    <div class="card" onclick="openRecipe('biryani')">
+        <img src="biryani.jpg" alt="Veg Biryani">
+        <h3>Veg Biryani</h3>
+        <div class="tags">
+            <span class="tag">Indian</span>
+            <span class="tag">Medium</span>
+            <span class="tag">45 mins</span>
+        </div>
+    </div>
+
+    <div class="card" onclick="openRecipe('noodles')">
+        <img src="Noodles.jpg" alt="Veg Noodles">
+        <h3>Veg Noodles</h3>
+        <div class="tags">
+            <span class="tag">Chinese</span>
+            <span class="tag">Quick</span>
+            <span class="tag">20 mins</span>
+        </div>
+    </div>
+
+    <div class="card" onclick="openRecipe('dosa')">
+        <img src="dosa.png" alt="Masala Dosa">
+        <h3>Masala Dosa</h3>
+        <div class="tags">
+            <span class="tag">South Indian</span>
+            <span class="tag">Crispy</span>
+            <span class="tag">25 mins</span>
+        </div>
+    </div>
+
+    <div class="card" onclick="openRecipe('cake')">
+        <img src="cake.jpg" alt="Chocolate Cake">
+        <h3>Chocolate Cake</h3>
+        <div class="tags">
+            <span class="tag">Dessert</span>
+            <span class="tag">Sweet</span>
+            <span class="tag">40 mins</span>
+        </div>
+    </div>
+
+</section>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closeRecipe()">&times;</span>
+        <div id="popup-body"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
